@@ -38,3 +38,6 @@ struct int_var {
     const struct int_var_value_cfg value_cfg;
     int cur_value;
 };
+
+int vm_get(const var_name_t name, void *const get_value);
+int vm_init(void *const var_list[], const int var_list_size);
