@@ -4,9 +4,13 @@
 #include "var_list.h"
 #include "var_map.h"
 
-
 int main() {
-    printf("test_var min value: %d\n", var_name_test_var_param.value_cfg.min_value);
-    printf("test_var std value: %d\n", vm_var_name_test_var.param->value_cfg.std_value);
+    vm_init(var_list, var_list_size);
+    int test = 0;
+    if (vm_get(var_name_test_var, &test) == 0) {
+        printf("test_var value: %d\n", test);
+    } else {
+        printf("test_var not found\n");
+    }
     return 0;
 }
