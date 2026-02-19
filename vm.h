@@ -14,6 +14,7 @@
         }, \
     };
 
+#define ADD_VAR_VALUE(name_) (void*)&vm_##name_
 
 typedef uint16_t var_name_t;
 
