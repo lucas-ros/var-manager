@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "../vm.h"
+#include "vm.h"
 #include "var_list.h"
 #include "var_map.h"
 
