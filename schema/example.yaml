@@ -1,0 +1,14 @@
+variables:
+  - name: input_density           #required
+    type: float                   #required
+    min: 0.1                      #optional (default type limit)
+    max: 1000000                  #optional (default type limit)
+    default: 1                    #required
+    persist: true                 #optional (default false)
+    desc: "Densidade inserida"    #optional
+
+  - name: mass_flow
+    type: float
+    default: 0
+    persist: false
+    desc: "Vazão mássica"
