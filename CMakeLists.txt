@@ -5,5 +5,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Werror")
 
+enable_testing()
+
 add_subdirectory(vm)
-add_subdirectory(app)
+add_subdirectory(tests)
