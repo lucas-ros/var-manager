@@ -1,4 +1,4 @@
-ADD_INT(var_name_test_var, 10, 5, 100)
+ADD_INT(var_name_test_var, 10, 5, 100, 1, "teste")
 
 void *const var_list[] = {
     ADD_VAR_VALUE(var_name_test_var),

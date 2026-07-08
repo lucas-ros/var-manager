@@ -1,9 +1,11 @@
 #include <stdint.h>
 
-#define ADD_INT(name_, std_value_, min_value_, max_value_) \
+#define ADD_INT(name_, std_value_, min_value_, max_value_, persist_, description_) \
     static const struct var_param name_##_param = { \
         .name = name_, \
         .type = VAR_TYPE_INT, \
+        .persist = persist_, \
+        .description = description_,\
     }; \
     static struct int_var vm_##name_ = { \
         .param = &name_##_param, \
@@ -31,6 +33,8 @@ struct int_var_value_cfg {
 struct var_param {
     const var_name_t name;
     const enum var_type type;
+    const char persist;
+    const char *description;
 };
 
 struct int_var {
