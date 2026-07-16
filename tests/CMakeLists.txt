@@ -1,4 +1,4 @@
-add_executable(test_vm test_vm.c)
+add_executable(test_vm test_vm.c var_map.c)
 add_library(unity unity/unity.c)
 
 target_include_directories(test_vm PRIVATE

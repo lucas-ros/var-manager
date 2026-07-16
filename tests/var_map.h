@@ -1,7 +1,7 @@
-ADD_INT(var_name_test_var, 10, 5, 100, 1, "teste")
+#ifndef VAR_MAP_H
+#define VAR_MAP_H
 
-void *const var_list[] = {
-    ADD_VAR_VALUE(var_name_test_var),
-};
+extern void *const var_list[];
+extern int var_list_size;
 
-int var_list_size = sizeof(var_list) / sizeof(var_list[0]);
+#endif
