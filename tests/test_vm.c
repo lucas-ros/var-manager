@@ -51,7 +51,7 @@ void test_vm_get_var_list_size_valid(void) {
 
 void test_vm_get_var_list_size_invalid(void) {
     int result = vm_get_var_list_size();
-    TEST_ASSERT_EQUAL(var_list_size, result);
+    TEST_ASSERT_EQUAL(-1, result);
 }
 
 int main(void) {

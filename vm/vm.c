@@ -33,7 +33,11 @@ int vm_deinit(void) {
 }
 
 int vm_get_var_list_size(void) {
-    return 0;
+    if(vm_var_list == NULL) {
+        printf("var_list not initialized\n");
+        return -1;
+    }
+    return vm_var_list_size;
 }
 
 int vm_get(const var_name_t name, void *const get_value) {
