@@ -4,11 +4,15 @@
 
 #include <stdio.h>
 
-static void *const *vm_var_list;
+static void *const *vm_var_list = NULL;
 static int vm_var_list_size = 0;
 
 int vm_init(void *const var_list[], const int var_list_size) {
-    if (var_list == NULL || var_list_size <= 0) {
+    if (vm_var_list != NULL) {
+        printf("var_list already initialized\n");
+        return -1;
+    }
+    if (var_list == NULL || var_list_size == 0) {
         printf("Invalid var_list or var_list_size\n");
         return -1;
     }
