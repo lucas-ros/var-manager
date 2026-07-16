@@ -22,6 +22,16 @@ int vm_init(void *const var_list[], const int var_list_size) {
     return 0;
 }
 
+int vm_deinit(void) {
+    if (vm_var_list == NULL) {
+        printf("var_list not initialized\n");
+        return -1;
+    }
+    vm_var_list = NULL;
+    vm_var_list_size = 0;
+    return 0;
+}
+
 int vm_get(const var_name_t name, void *const get_value) {
     if (vm_var_list == NULL || vm_var_list_size == 0) {
         printf("VM not initialized\n");
