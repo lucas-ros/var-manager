@@ -12,7 +12,7 @@ int vm_init(void *const var_list[], const int var_list_size) {
         printf("var_list already initialized\n");
         return -1;
     }
-    if (var_list == NULL || var_list_size == 0) {
+    if (var_list == NULL || var_list_size <= 0) {
         printf("Invalid var_list or var_list_size\n");
         return -1;
     }
