@@ -45,4 +45,5 @@ struct int_var {
 
 int vm_init(void *const var_list[], const int var_list_size);
 int vm_deinit(void);
+int vm_get_var_list_size(void);
 int vm_get(const var_name_t name, void *const get_value);
