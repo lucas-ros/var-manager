@@ -7,14 +7,16 @@
         .persist = persist_, \
         .description = description_,\
     }; \
+    static const struct int_var_value_cfg vm_##name_##_cfg = { \
+        .std_value = (int)std_value_, \
+        .min_value = (int)min_value_, \
+        .max_value = (int)max_value_, \
+    }; \
     static struct int_var vm_##name_ = { \
         .param = &name_##_param, \
-        .value_cfg = { \
-            .std_value = (const int)std_value_, \
-            .min_value = (const int)min_value_, \
-            .max_value = (const int)max_value_, \
-        }, \
-    };
+        .value_cfg = &vm_##name_##_cfg, \
+        .cur_value = std_value_\
+    }; \
 
 #define ADD_VAR_VALUE(name_) (void*)&vm_##name_
 
@@ -39,7 +41,7 @@ struct var_param {
 
 struct int_var {
     const struct var_param *const param;
-    const struct int_var_value_cfg value_cfg;
+    const struct int_var_value_cfg *const value_cfg;
     int cur_value;
 };
 
