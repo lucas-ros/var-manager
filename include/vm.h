@@ -1,3 +1,6 @@
+#ifndef VM_H
+#define VM_H
+
 #include <stdint.h>
 
 #define ADD_INT(name_, std_value_, min_value_, max_value_, persist_, description_) \
@@ -49,3 +52,5 @@ int vm_init(void *const var_list[], const int var_list_size);
 int vm_deinit(void);
 int vm_get_var_list_size(void);
 int vm_get(const var_name_t name, void *const get_value);
+
+#endif // VH_H
