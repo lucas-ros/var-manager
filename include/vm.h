@@ -2,6 +2,9 @@
 #define VM_H
 
 #include <stdint.h>
+#include <stdarg.h>
+
+typedef void (*vm_log_fn_t)(const char *fmt, va_list args);
 
 #define ADD_INT(name_, std_value_, min_value_, max_value_, persist_, description_) \
     static const struct var_param name_##_param = { \
@@ -48,9 +51,10 @@ struct int_var {
     int cur_value;
 };
 
+void vm_log_set_callback(vm_log_fn_t fn);
 int vm_init(void *const var_list[], const int var_list_size);
 int vm_deinit(void);
 int vm_get_var_list_size(void);
 int vm_get(const var_name_t name, void *const get_value);
 
-#endif // VH_H
+#endif // VM_H
