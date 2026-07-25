@@ -12,3 +12,9 @@ target_link_libraries(test_vm PRIVATE unity)
 target_compile_options(test_vm PRIVATE -Wall -Wextra)
 
 add_test(NAME test_vm COMMAND test_vm)
+
+option(VM_TEST_LOGS "Enable var-manager logs in unit tests" OFF)
+
+if(VM_TEST_LOGS)
+    target_compile_definitions(test_vm PRIVATE VM_TEST_LOGS=1)
+endif()

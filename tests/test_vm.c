@@ -2,8 +2,23 @@
 #include "vm.h"
 #include "var_map.h"
 
-void setUp(void) {}
+#include <stdio.h>
+#include <stdarg.h>
+
+static void log_stdout(const char *fmt, va_list args) {
+    vprintf(fmt, args);
+}
+
+void setUp(void) {
+#if defined(VM_TEST_LOGS)
+    vm_log_set_callback(log_stdout);
+#else
+    vm_log_set_callback(NULL);
+#endif
+}
+
 void tearDown(void) {
+    vm_log_set_callback(NULL);
     vm_deinit();
 }
 
