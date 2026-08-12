@@ -6,7 +6,7 @@
 
 typedef void (*vm_log_fn_t)(const char *fmt, va_list args);
 
-#define ADD_INT(id_, index_, std_value_, min_value_, max_value_, persist_, description_) \
+#define ADD_INT(id_, std_value_, min_value_, max_value_, persist_, description_) \
     static const struct var_param id_##_param = { \
         .id = id_, \
         .type = VAR_TYPE_INT, \
@@ -55,6 +55,6 @@ void vm_log_set_callback(vm_log_fn_t fn);
 int vm_init(void *const var_list[], const int var_list_size);
 int vm_deinit(void);
 int vm_get_var_list_size(void);
-int vm_get(const var_id_t name, void *const get_value);
+int vm_get_by_id(const var_id_t id, void *const get_value);
 
 #endif // VM_H

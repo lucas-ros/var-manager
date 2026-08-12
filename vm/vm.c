@@ -54,3 +54,7 @@ int vm_get_var_list_size(void) {
     }
     return vm_var_list_size;
 }
+
+int vm_get_by_id(const var_id_t id, void *const get_value) {
+    return -1;
+}

@@ -1,6 +1,7 @@
 #include "unity.h"
 #include "vm.h"
 #include "var_map.h"
+#include "var_list.h"
 
 #include <stdio.h>
 #include <stdarg.h>
@@ -71,6 +72,12 @@ void test_vm_get_var_list_size_invalid(void) {
     TEST_ASSERT_EQUAL(-1, result);
 }
 
+void test_vm_get_by_id_int(void) {
+    int get_buffer = 0;
+    vm_get_by_id(VAR_ID_TEST_INT, &get_buffer);
+    TEST_ASSERT_EQUAL(VAR_STD_TEST_INT, get_buffer);
+}
+
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_vm_init_valid);
@@ -81,6 +88,7 @@ int main(void) {
     RUN_TEST(test_vm_init_already_initialized_var_list);
     RUN_TEST(test_vm_get_var_list_size_valid);
     RUN_TEST(test_vm_get_var_list_size_invalid);
+    RUN_TEST(test_vm_get_by_id_int);
 
     return UNITY_END();
 }
