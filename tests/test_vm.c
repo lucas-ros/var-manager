@@ -73,6 +73,9 @@ void test_vm_get_var_list_size_invalid(void) {
 }
 
 void test_vm_get_by_id_int(void) {
+    if(vm_init(var_list, var_list_size) < 0) {
+        TEST_FAIL();
+    }
     int get_buffer = 0;
     vm_get_by_id(VAR_ID_TEST_INT, &get_buffer);
     TEST_ASSERT_EQUAL(VAR_STD_TEST_INT, get_buffer);
