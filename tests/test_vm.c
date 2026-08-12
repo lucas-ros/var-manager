@@ -5,9 +5,11 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+#if defined(VM_TEST_LOGS)
 static void log_stdout(const char *fmt, va_list args) {
     vprintf(fmt, args);
 }
+#endif
 
 void setUp(void) {
 #if defined(VM_TEST_LOGS)
