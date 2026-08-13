@@ -55,7 +55,7 @@ void vm_log_set_callback(vm_log_fn_t fn);
 int vm_init(void *const var_list[], const int var_list_size);
 int vm_deinit(void);
 int vm_get_var_list_size(void);
-int vm_get_by_id(const var_id_t id, void *const get_value);
+int vm_get_by_id(const var_id_t id, void *const get_value_buffer);
 int vm_set_by_id(const var_id_t id, void *const set_value_buffer);
 
 #endif // VM_H

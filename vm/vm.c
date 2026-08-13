@@ -55,7 +55,7 @@ int vm_get_var_list_size(void) {
     return vm_var_list_size;
 }
 
-int vm_get_by_id(const var_id_t id, void *const get_value) {
+int vm_get_by_id(const var_id_t id, void *const get_value_buffer) {
     const struct var_param *var_param;
     for(int index = 0; index < vm_var_list_size; index++) {
         memcpy(&var_param, vm_var_list[index], sizeof(var_param));
@@ -63,7 +63,7 @@ int vm_get_by_id(const var_id_t id, void *const get_value) {
             switch(var_param->type) {
                 case VAR_TYPE_INT:
                     struct int_var *int_var = vm_var_list[index];
-                    memcpy(get_value, &int_var->cur_value, sizeof(int));
+                    memcpy(get_value_buffer, &int_var->cur_value, sizeof(int));
                     return 0;
                     break;
             }
@@ -84,7 +84,6 @@ int vm_set_by_id(const var_id_t id, void *const set_value_buffer) {
                     struct int_var *int_var = vm_var_list[index];
                     if(set_value < int_var->value_cfg->min_value) return -1;
                     if(set_value > int_var->value_cfg->max_value) return -1;
-
                     int_var->cur_value = set_value;
                     return 0;
                     break;
