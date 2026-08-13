@@ -90,6 +90,42 @@ void test_vm_get_by_id_unknown_id(void) {
     TEST_ASSERT_EQUAL(-1, result);
 }
 
+void test_vm_set_by_id_int(void) {
+    if(vm_init(var_list, var_list_size) < 0) {
+        TEST_FAIL();
+    }
+    int set_buffer = VAR_MIN_TEST_INT;
+    int result = vm_set_by_id(VAR_ID_TEST_INT, &set_buffer);
+    TEST_ASSERT_EQUAL(0, result);
+}
+
+void test_vm_set_by_id_unknown_id(void) {
+    if(vm_init(var_list, var_list_size) < 0) {
+        TEST_FAIL();
+    }
+    int set_buffer = VAR_MIN_TEST_INT;
+    int result = vm_set_by_id(VAR_ID_TEST_UNKNOWN, &set_buffer);
+    TEST_ASSERT_EQUAL(-1, result);
+}
+
+void test_vm_set_by_id_int_min_value_fail(void) {
+    if(vm_init(var_list, var_list_size) < 0) {
+        TEST_FAIL();
+    }
+    int set_buffer = VAR_MIN_TEST_INT-1;
+    int result = vm_set_by_id(VAR_ID_TEST_INT, &set_buffer);
+    TEST_ASSERT_EQUAL(-1, result);
+}
+
+void test_vm_set_by_id_int_max_value_fail(void) {
+    if(vm_init(var_list, var_list_size) < 0) {
+        TEST_FAIL();
+    }
+    int set_buffer = VAR_MAX_TEST_INT+1;
+    int result = vm_set_by_id(VAR_ID_TEST_INT, &set_buffer);
+    TEST_ASSERT_EQUAL(-1, result);
+}
+
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_vm_init_valid);
@@ -102,6 +138,10 @@ int main(void) {
     RUN_TEST(test_vm_get_var_list_size_invalid);
     RUN_TEST(test_vm_get_by_id_int);
     RUN_TEST(test_vm_get_by_id_unknown_id);
+    RUN_TEST(test_vm_set_by_id_int);
+    RUN_TEST(test_vm_set_by_id_int);
+    RUN_TEST(test_vm_set_by_id_int_min_value_fail);
+    RUN_TEST(test_vm_set_by_id_int_max_value_fail);
 
     return UNITY_END();
 }
