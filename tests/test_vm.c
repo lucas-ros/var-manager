@@ -81,6 +81,15 @@ void test_vm_get_by_id_int(void) {
     TEST_ASSERT_EQUAL(VAR_STD_TEST_INT, get_buffer);
 }
 
+void test_vm_get_by_id_unknown_id(void) {
+    if(vm_init(var_list, var_list_size) < 0) {
+        TEST_FAIL();
+    }
+    int get_buffer = 0;
+    int result = vm_get_by_id(VAR_ID_TEST_UNKNOWN, &get_buffer);
+    TEST_ASSERT_EQUAL(-1, result);
+}
+
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_vm_init_valid);
@@ -92,6 +101,7 @@ int main(void) {
     RUN_TEST(test_vm_get_var_list_size_valid);
     RUN_TEST(test_vm_get_var_list_size_invalid);
     RUN_TEST(test_vm_get_by_id_int);
+    RUN_TEST(test_vm_get_by_id_unknown_id);
 
     return UNITY_END();
 }
