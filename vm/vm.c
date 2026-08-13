@@ -56,9 +56,8 @@ int vm_get_var_list_size(void) {
 }
 
 int vm_get_by_id(const var_id_t id, void *const get_value_buffer) {
-    const struct var_param *var_param;
     for(int index = 0; index < vm_var_list_size; index++) {
-        memcpy(&var_param, vm_var_list[index], sizeof(var_param));
+        const struct var_param *var_param = *(const struct var_param *const *)vm_var_list[index];
         if(var_param->id == id) {
             switch(var_param->type) {
                 case VAR_TYPE_INT:
@@ -74,9 +73,8 @@ int vm_get_by_id(const var_id_t id, void *const get_value_buffer) {
 }
 
 int vm_get_int_by_id(const var_id_t id, int *const get_value_buffer) {
-    const struct var_param *var_param;
     for(int index = 0; index < vm_var_list_size; index++) {
-        memcpy(&var_param, vm_var_list[index], sizeof(var_param));
+        const struct var_param *var_param = *(const struct var_param *const *)vm_var_list[index];
         if(var_param->id == id) {
             if(var_param->type != VAR_TYPE_INT) return -1;
             struct int_var *int_var = vm_var_list[index];
@@ -89,9 +87,8 @@ int vm_get_int_by_id(const var_id_t id, int *const get_value_buffer) {
 }
 
 int vm_set_by_id(const var_id_t id, void *const set_value_buffer) {
-    const struct var_param *var_param;
     for(int index = 0; index < vm_var_list_size; index++) {
-        memcpy(&var_param, vm_var_list[index], sizeof(var_param));
+        const struct var_param *var_param = *(const struct var_param *const *)vm_var_list[index];
         if(var_param->id == id) {
             switch(var_param->type) {
                 case VAR_TYPE_INT:
