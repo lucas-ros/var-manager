@@ -56,14 +56,14 @@ int vm_get_var_list_size(void) {
 }
 
 int vm_get_by_id(const var_id_t id, void *const get_value) {
-    const struct var_param *param;
+    const struct var_param *var_param;
     for(int index = 0; index < vm_var_list_size; index++) {
-        memcpy(&param, vm_var_list[index], sizeof(param));
-        if(param->id == id) {
-            switch(param->type) {
+        memcpy(&var_param, vm_var_list[index], sizeof(var_param));
+        if(var_param->id == id) {
+            switch(var_param->type) {
                 case VAR_TYPE_INT:
-                    struct int_var *var = vm_var_list[index];
-                    memcpy(get_value, &var->cur_value, sizeof(int));
+                    struct int_var *int_var = vm_var_list[index];
+                    memcpy(get_value, &int_var->cur_value, sizeof(int));
                     return 0;
                     break;
             }
