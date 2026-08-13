@@ -73,6 +73,21 @@ int vm_get_by_id(const var_id_t id, void *const get_value_buffer) {
     return -1;
 }
 
+int vm_get_int_by_id(const var_id_t id, int *const get_value_buffer) {
+    const struct var_param *var_param;
+    for(int index = 0; index < vm_var_list_size; index++) {
+        memcpy(&var_param, vm_var_list[index], sizeof(var_param));
+        if(var_param->id == id) {
+            if(var_param->type != VAR_TYPE_INT) return -1;
+            struct int_var *int_var = vm_var_list[index];
+            memcpy(get_value_buffer, &int_var->cur_value, sizeof(int));
+            return 0;
+        }
+    }
+    vm_log("index not found\n");
+    return -1;
+}
+
 int vm_set_by_id(const var_id_t id, void *const set_value_buffer) {
     const struct var_param *var_param;
     for(int index = 0; index < vm_var_list_size; index++) {
